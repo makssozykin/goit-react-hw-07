@@ -3,7 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import toast from 'react-hot-toast';
 import { nanoid } from 'nanoid';
-import { addContact } from '../../redux/contactsSlice';
+import { addContact } from '../../redux/contactsOps';
 import css from './ContactForm.module.css';
 
 const nameRegex = /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/;
@@ -49,7 +49,7 @@ export const ContactForm = () => {
       actions.resetForm();
       return;
     }
-    dispatch(addContact({ id: nanoid(), ...values }));
+    dispatch(addContact({ ...values }));
     toast.success('New contact has been added to your phonebook');
     actions.resetForm();
   };
