@@ -1,0 +1,38 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.3);
+  margin-bottom: 1rem;
+  padding: 1rem;
+  gap: 10px;
+  & button {
+    align-self: center;
+    width: 150px;
+    background-color: teal;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: none;
+    box-shadow: 2px 2px 4px 4px rgba(0, 0, 0, 0.3);
+  }
+}
+.label {
+  gap: 5px;
+  display: flex;
+  flex-direction: column;
+  & span {
+    font-weight: bold;
+  }
+}
+.input {
+  border-radius: 8px;
+  padding: 5px;
+  box-shadow: 2px 2px 4px 4px lightgray;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+}
