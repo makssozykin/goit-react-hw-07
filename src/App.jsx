@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchContacts } from './redux/contactsOps';
 import Title from './components/Title/Title';
-import { Toaster } from 'react-hot-toast';
+import { Toaster, toast } from 'react-hot-toast';
 import { ContactForm } from './components/ContactForm/ContactForm';
 import { SearchBox } from './components/SearchBox/SearchBox';
 import { ContactList } from './components/ContactList/ContactList';
