@@ -6,6 +6,7 @@ import { Toaster } from 'react-hot-toast';
 import { ContactForm } from './components/ContactForm/ContactForm';
 import { SearchBox } from './components/SearchBox/SearchBox';
 import { ContactList } from './components/ContactList/ContactList';
+import { Loader } from './components/Loader/Loader';
 import './App.css';
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
       <Title title="Phonebook" />
       <ContactForm />
       <SearchBox />
-      {loading && !error && <p>Loading contacts...</p>}
+      {loading && !error && <Loader />}
       {error && <p>{error}</p>}
       {items.length > 0 && <ContactList />}
       <Toaster position="top-right" reverseOrder={false} />
