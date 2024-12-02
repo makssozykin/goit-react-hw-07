@@ -3,6 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import toast from 'react-hot-toast';
 import { nanoid } from 'nanoid';
+import { selectContacts } from '../../redux/contactsSlice';
 import { addContact } from '../../redux/contactsOps';
 import css from './ContactForm.module.css';
 
@@ -39,7 +40,7 @@ export const ContactForm = () => {
   const nameId = nanoid();
   const numberId = nanoid();
   const dispatch = useDispatch();
-  const contacts = useSelector(state => state.contacts.items);
+  const contacts = useSelector(selectContacts);
   const handleSubmit = (values, actions) => {
     const isInContacts = contacts.some(
       ({ name }) => name.toLowerCase() === values.name.toLowerCase()
