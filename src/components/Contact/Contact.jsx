@@ -1,12 +1,19 @@
 import { useDispatch } from 'react-redux';
 import toast from 'react-hot-toast';
-import { deleteContact } from '../../redux/contactsOps';
+import { deleteContact, editContact } from '../../redux/contactsOps';
 import { IoIosContact } from 'react-icons/io';
 import { FcPhoneAndroid } from 'react-icons/fc';
 import css from './Contact.module.css';
 
-export const Contact = ({ contact }) => {
+export const Contact = ({ contact, onModal }) => {
   const dispatch = useDispatch();
+  // const handleModal = () => {
+  //   dispatch(editContact(contact));
+  //   onModal();
+  // };
+  // const handleEditContact = () => {
+  //   onModal();
+  // };
   const handleDeleteContact = () => {
     dispatch(deleteContact(contact.id));
     toast.success('Контакт видалено зі списку');
@@ -24,6 +31,9 @@ export const Contact = ({ contact }) => {
           {number}
         </p>
       </div>
+      {/* <button className={css['delete-btn']} type="button" onClick={handleModal}>
+        Edit
+      </button> */}
       <button
         className={css['delete-btn']}
         type="button"

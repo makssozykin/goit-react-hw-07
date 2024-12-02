@@ -1,5 +1,10 @@
 import { createSelector, createSlice } from '@reduxjs/toolkit';
-import { fetchContacts, addContact, deleteContact } from './contactsOps';
+import {
+  fetchContacts,
+  addContact,
+  deleteContact,
+  editContact,
+} from './contactsOps';
 import { selectFilterNameContact } from './filtersSlice';
 
 const handlePending = state => {
@@ -40,7 +45,16 @@ const contactsReducer = createSlice({
         state.error = null;
         state.items = state.items.filter(item => item.id !== action.payload.id);
       })
-      .addCase(deleteContact.rejected, handleRejected);
+      .addCase(deleteContact.rejected, handleRejected)
+      .addCase(editContact.pending, handlePending)
+      .addCase(editContact.fulfilled, (state, action) => {
+        state.loading = false;
+        state.error = null;
+        const item = state.items.find(item => item.id === action.payload.id);
+        item.name = action.payload.name;
+        item.number = action.payload.number;
+      })
+      .addCase(editContact.rejected, handleRejected);
   },
 });
 
