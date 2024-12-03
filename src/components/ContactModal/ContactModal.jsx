@@ -3,7 +3,8 @@ import { ContactForm } from '../ContactForm/ContactForm';
 import { IoMdClose } from 'react-icons/io';
 import s from './ContactModal.module.css';
 
-export const ContactModal = ({ isOpenModal, onCloseModal }) => {
+export const ContactModal = ({ isOpenModal, onCloseModal, contact }) => {
+  console.log(contact);
   return (
     <Modal
       isOpen={isOpenModal}
@@ -17,7 +18,7 @@ export const ContactModal = ({ isOpenModal, onCloseModal }) => {
         <button className={s.closeBtn} onClick={onCloseModal}>
           <IoMdClose className={s.closeBtnSvg} />
         </button>
-        <ContactForm />
+        <ContactForm initialValues={contact} onCloseModal={onCloseModal} />
       </div>
     </Modal>
   );

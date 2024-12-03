@@ -1,12 +1,11 @@
 import { useSelector } from 'react-redux';
-// import { useToggle } from '../../hooks/useToggle';
+
 import { selectFilteredContacts } from '../../redux/contactsSlice';
 import { Contact } from '../Contact/Contact';
-// import { ContactModal } from '../ContactModal/ContactModal';
+
 import css from './ContactList.module.css';
 
-export const ContactList = () => {
-  // const { isOpenModal, openModal, closeModal } = useToggle();
+export const ContactList = ({ openModal, contactInfo }) => {
   const visibleContacts = useSelector(selectFilteredContacts);
 
   return (
@@ -15,8 +14,12 @@ export const ContactList = () => {
         {visibleContacts.length > 0 ? (
           visibleContacts.map(contact => (
             <li key={contact.id} className={css['contact-item']}>
-              <Contact contact={contact} />
-              {/* <Contact contact={contact} onModal={openModal} /> */}
+              {/* <Contact contact={contact} /> */}
+              <Contact
+                contact={contact}
+                onModal={openModal}
+                contactInfo={contactInfo}
+              />
             </li>
           ))
         ) : (
@@ -25,7 +28,6 @@ export const ContactList = () => {
           </li>
         )}
       </ul>
-      {/* <ContactModal isOpenModal={isOpenModal} onCloseModal={closeModal} /> */}
     </>
   );
 };
